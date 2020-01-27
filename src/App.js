@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import WatchTable from './components/WatchTable';
 import CreateWatch from './components/CreateWatch';
