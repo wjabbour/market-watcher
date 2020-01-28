@@ -9,7 +9,19 @@ class WatchTable extends Component {
         getWatches();
     }
     render() {
-        return <p>My Table!</p>
+        return (
+            <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Init. Price</th>
+                            <th>Current Price</th>
+                            <th>Date Created</th>
+                            <th>% Change</th>
+                        </tr>
+                    </thead>
+            </table>
+        );  
     }
 }
 
