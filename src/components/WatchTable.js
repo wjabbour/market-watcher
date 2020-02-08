@@ -1,4 +1,5 @@
 import React, { Component, props } from 'react';
+import Watch from './Watch';
 import { getWatches } from '../services/http-service';
 
 class WatchTable extends Component {
