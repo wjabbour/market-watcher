@@ -5,6 +5,7 @@ class Watch extends Component {
         super(props);
     }
     render() {
+        // TODO: some of these props will need to be calculated in the constructor or lifecycle method
         return (
             <tr>
                 <th scope="row">{ this.props.ticker }</th>
