@@ -4,9 +4,17 @@ import {getWatches} from '../services/http-service';
 class WatchTable extends Component {
     constructor() {
         super(props);
+
+        this.state = {
+            watches: []
+        }
     }
     componentDidMount() {
-        getWatches();
+        getWatches().then(result => {
+            this.setState({
+                watches: result
+            });
+        });  
     }
     render() {
         return (
