@@ -6,9 +6,13 @@ class Watch extends Component {
     }
     render() {
         return (
-            <div>
-                This is a watch!
-            </div>
+            <tr>
+                <th scope="row">{ this.props.ticker }</th>
+                <td>{this.props.initPrice}</td>
+                <td>{this.props.currentPrice}</td>
+                <td>{this.props.dateCreated}</td>
+                <td>{this.props.percentChange}</td>
+            </tr>
         );  
     }
 }
