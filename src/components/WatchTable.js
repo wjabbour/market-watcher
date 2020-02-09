@@ -12,13 +12,15 @@ class WatchTable extends Component {
     }
     componentDidMount() {
         getWatches().then(result => {
+            const watches = result.watches.map((watch) =>
+                <Watch ticker={watch.ticker}/>
+            );
             this.setState({
-                watches: result
+                watches: watches
             });
         });  
     }
     render() {
-        const watches = <div></div>;
         return (
             <table>
                     <thead>
@@ -31,7 +33,7 @@ class WatchTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        { watches }
+                        { this.state.watches }
                     </tbody>
             </table>
         );  
