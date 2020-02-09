@@ -14,7 +14,6 @@ class CreateWatch extends Component {
         this.onChangeTicker = this.onChangeTicker.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
-
     onChangeTicker(e) {
         this.setState({
             ticker: e.target.value
