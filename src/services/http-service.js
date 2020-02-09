@@ -5,12 +5,12 @@ export function getWatches() {
         .then(res => res.json())
 }
 
-export function deleteWatch() {
-    return fetch("http://localhost:3339/watch/", {
+export function deleteWatch(watchId) {
+    return fetch("http://localhost:3339/watch?watchId=" + watchId, {
         method: 'DELETE'
     })
-        .then(res => res.json())
-            .then(result => result)
+        // .then(res => res.json())
+        //     .then(result => result)
 }
 
 export function createWatch() {

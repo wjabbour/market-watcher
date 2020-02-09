@@ -20,13 +20,10 @@ class WatchTable extends Component {
                 watches: watches
             });
         });
-        deleteWatch().then(watchJSON => {
-            console.log(watchJSON);
-        })
     }
-    handleDeleteClick(e, myId) {
+    handleDeleteClick(e, watchId) {
         e.preventDefault();
-        console.log("Event", myId);
+        deleteWatch(watchId);
     }
     createWatches(watchJSON) {
         let watchCount = this.watchCount;
@@ -38,7 +35,8 @@ class WatchTable extends Component {
                                 dateCreated={watch.dateCreated}
                                 percentChange={watch.percentChange}
                                 handleDeleteClick={this.handleDeleteClick}
-                                key={watchCount.toString()}
+                                watchId={watch._id}
+                                key={watch._id}
                          />)
                 watchCount++;
         });
