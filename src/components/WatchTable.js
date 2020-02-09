@@ -16,17 +16,17 @@ class WatchTable extends Component {
             this.setState({
                 watches: watches
             });
-        });  
+        });
     }
     createWatches(watchJSON) {
-        
+        let watchCount = this.watchCount;
         const watches = watchJSON.watches.map((watch) =>
             <Watch  ticker={watch.ticker}
                     initPrice={watch.initPrice}
                     currentPrice={watch.currentPrice}
                     dateCreated={watch.dateCreated}
                     percentChange={watch.percentChange}
-                    // key={watchCount.toString()}
+                    key={watchCount.toString()}
             />
         );
         this.watchCount++;
