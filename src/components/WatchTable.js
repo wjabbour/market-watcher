@@ -5,7 +5,7 @@ import { getWatches } from '../services/http-service';
 class WatchTable extends Component {
     constructor() {
         super(props);
-
+        watchCount = 0
         this.state = {
             watches: []
         }
@@ -13,7 +13,13 @@ class WatchTable extends Component {
     componentDidMount() {
         getWatches().then(result => {
             const watches = result.watches.map((watch) =>
-                <Watch ticker={watch.ticker}/>
+                <Watch  ticker={watch.ticker}
+                        initPrice={watch.initPrice}
+                        currentPrice={watch.currentPrice}
+                        dateCreated={watch.dateCreated}
+                        percentChange={watch.percentChange}
+                        key={this.watchCount.toString()}
+                />
             );
             this.setState({
                 watches: watches
