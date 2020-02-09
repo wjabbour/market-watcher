@@ -20,16 +20,17 @@ class WatchTable extends Component {
     }
     createWatches(watchJSON) {
         let watchCount = this.watchCount;
-        const watches = watchJSON.watches.map((watch) =>
-            <Watch  ticker={watch.ticker}
-                    initPrice={watch.initPrice}
-                    currentPrice={watch.currentPrice}
-                    dateCreated={watch.dateCreated}
-                    percentChange={watch.percentChange}
-                    key={watchCount.toString()}
-            />
-        );
-        this.watchCount++;
+        let watches = [];
+        watchJSON.watches.forEach(watch => {
+            watches.push(<Watch ticker={watch.ticker}
+                                initPrice={watch.initPrice}
+                                currentPrice={watch.currentPrice}
+                                dateCreated={watch.dateCreated}
+                                percentChange={watch.percentChange}
+                                key={watchCount.toString()}
+                         />)
+                watchCount++;
+        });
         return watches;
     }
     render() {
