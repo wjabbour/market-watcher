@@ -5,26 +5,32 @@ import { getWatches } from '../services/http-service';
 class WatchTable extends Component {
     constructor() {
         super(props);
-        watchCount = 0
+        this.watchCount = 0
         this.state = {
             watches: []
         }
     }
     componentDidMount() {
-        getWatches().then(result => {
-            const watches = result.watches.map((watch) =>
-                <Watch  ticker={watch.ticker}
-                        initPrice={watch.initPrice}
-                        currentPrice={watch.currentPrice}
-                        dateCreated={watch.dateCreated}
-                        percentChange={watch.percentChange}
-                        key={this.watchCount.toString()}
-                />
-            );
+        getWatches().then(watchJSON => {
+            const watches = this.createWatches(watchJSON);
             this.setState({
                 watches: watches
             });
         });  
+    }
+    createWatches(watchJSON) {
+        
+        const watches = watchJSON.watches.map((watch) =>
+            <Watch  ticker={watch.ticker}
+                    initPrice={watch.initPrice}
+                    currentPrice={watch.currentPrice}
+                    dateCreated={watch.dateCreated}
+                    percentChange={watch.percentChange}
+                    // key={watchCount.toString()}
+            />
+        );
+        this.watchCount++;
+        return watches;
     }
     render() {
         return (
