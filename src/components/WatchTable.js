@@ -1,6 +1,6 @@
 import React, { Component, props } from 'react';
 import Watch from './Watch';
-import { getWatches } from '../services/http-service';
+import { getWatches, deleteWatch } from '../services/http-service';
 
 class WatchTable extends Component {
     constructor() {
@@ -9,24 +9,35 @@ class WatchTable extends Component {
         this.state = {
             watches: []
         }
+
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
     }
     componentDidMount() {
         getWatches().then(watchJSON => {
+            console.log(watchJSON);
             const watches = this.createWatches(watchJSON);
             this.setState({
                 watches: watches
             });
         });
+        deleteWatch().then(watchJSON => {
+            console.log(watchJSON);
+        })
+    }
+    handleDeleteClick(e, myId) {
+        e.preventDefault();
+        console.log("Event", myId);
     }
     createWatches(watchJSON) {
         let watchCount = this.watchCount;
         let watches = [];
-        watchJSON.watches.forEach(watch => {
+        watchJSON.forEach(watch => {
             watches.push(<Watch ticker={watch.ticker}
                                 initPrice={watch.initPrice}
                                 currentPrice={watch.currentPrice}
                                 dateCreated={watch.dateCreated}
                                 percentChange={watch.percentChange}
+                                handleDeleteClick={this.handleDeleteClick}
                                 key={watchCount.toString()}
                          />)
                 watchCount++;
@@ -43,6 +54,7 @@ class WatchTable extends Component {
                             <th>Current Price</th>
                             <th>Date Created</th>
                             <th>% Change</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
