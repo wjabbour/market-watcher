@@ -18,6 +18,7 @@ class WatchTable extends Component {
         });  
     }
     render() {
+        const watches = <div></div>;
         return (
             <table>
                     <thead>
@@ -29,6 +30,9 @@ class WatchTable extends Component {
                             <th>% Change</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        { watches }
+                    </tbody>
             </table>
         );  
     }
