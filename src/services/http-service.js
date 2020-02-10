@@ -1,15 +1,14 @@
-
+import axios from 'axios';
 export function getWatches() {
-    return fetch("http://localhost:3339/watch")
+    return fetch("http://localhost:3339/watches")
         .then(res => res.json())
 }
 export function deleteWatch(watchId) {
     return fetch("http://localhost:3339/watch?watchId=" + watchId, {
         method: 'DELETE'
     })
-        // .then(res => res.json())
-        //     .then(result => result)
 }
-export function createWatch() {
-    console.log("Watch created!");
+export function createWatch(watch) {
+    axios.post( "http://localhost:3339/watch/add", watch)
+        .then(res => console.log(res.data));
 }
