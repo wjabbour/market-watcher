@@ -7,7 +7,7 @@ class CreateWatch extends Component {
 
         this.state = {
             ticker: "",
-            initialPrice: 0
+            initialPrice: ""
         }
 
         this.onChangePrice = this.onChangePrice.bind(this);
@@ -21,15 +21,15 @@ class CreateWatch extends Component {
     }
     onChangePrice(e) {
         this.setState({
-            initialPrice: parseInt(e.target.value)
+            initialPrice: e.target.value
         });
     }
     onSubmit(e) {
         e.preventDefault();
-        createWatch({"ticker": this.state.ticker, "initialPrice": this.state.initialPrice});
+        createWatch({"ticker": this.state.ticker, "initialPrice": parseInt(this.state.initialPrice)});
         this.setState({
             ticker: "",
-            price: 0
+            initialPrice: ""
         });
     }
     render() {
@@ -55,7 +55,7 @@ class CreateWatch extends Component {
                             />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Create Todo" className="btn btn-primary" />
+                    <input type="submit" value="Create Todo" className="btn btn-primary" disabled={this.state.initialPrice === "" || this.state.ticker === ""}/>
                 </div>
             </form>
         </div>
