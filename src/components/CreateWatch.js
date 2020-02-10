@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { createWatch } from '../services/http-service';
 
 class CreateWatch extends Component {
     constructor(props) {
@@ -7,7 +7,7 @@ class CreateWatch extends Component {
 
         this.state = {
             ticker: "",
-            price: 0
+            initialPrice: 0
         }
 
         this.onChangePrice = this.onChangePrice.bind(this);
@@ -21,12 +21,12 @@ class CreateWatch extends Component {
     }
     onChangePrice(e) {
         this.setState({
-            price: e.target.value
+            initialPrice: parseInt(e.target.value)
         });
     }
     onSubmit(e) {
         e.preventDefault();
-
+        createWatch({"ticker": this.state.ticker, "initialPrice": this.state.initialPrice});
         this.setState({
             ticker: "",
             price: 0
@@ -50,7 +50,7 @@ class CreateWatch extends Component {
                     <input 
                             type="text" 
                             className="form-control"
-                            value={this.state.price}
+                            value={this.state.initialPrice}
                             onChange={this.onChangePrice}
                             />
                 </div>
