@@ -30,7 +30,7 @@ class WatchTable extends Component {
         let watches = [];
         watchJSON.forEach(watch => {
             watches.push(<Watch ticker={watch.ticker}
-                                initPrice={watch.initPrice}
+                                initialPrice={watch.initialPrice}
                                 currentPrice={watch.currentPrice}
                                 dateCreated={watch.dateCreated}
                                 percentChange={watch.percentChange}

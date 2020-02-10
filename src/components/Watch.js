@@ -14,7 +14,7 @@ class Watch extends Component {
         return (
             <tr>
                 <th scope="row">{ this.props.ticker }</th>
-                <td>{this.props.initPrice}</td>
+                <td>{this.props.initialPrice}</td>
                 <td>{this.props.currentPrice}</td>
                 <td>{this.props.dateCreated}</td>
                 <td>{this.props.percentChange}</td>
