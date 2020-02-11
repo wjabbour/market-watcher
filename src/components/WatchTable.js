@@ -48,7 +48,7 @@ class WatchTable extends Component {
                     <thead>
                         <tr>
                             <th>Ticker</th>
-                            <th>Init. Price</th>
+                            <th>Original Price</th>
                             <th>Current Price</th>
                             <th>Date Created</th>
                             <th>% Change</th>
