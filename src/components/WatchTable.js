@@ -23,7 +23,14 @@ class WatchTable extends Component {
     }
     handleDeleteClick(e, watchId) {
         e.preventDefault();
-        deleteWatch(watchId);
+        deleteWatch(watchId).then(res => {
+            if (res.status === 200) { 
+                const watches = this.state.watches.filter(watch => watch.key !== watchId);
+                this.setState({
+                    watches: watches
+                });
+            }
+        });
     }
     createWatches(watchJSON) {
         let watchCount = this.watchCount;
